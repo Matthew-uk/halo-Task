@@ -7,7 +7,7 @@ import { FaLink } from "react-icons/fa";
 const Hero = () => {
   return (
     <>
-      <div className="px-5 md:px-20 w-full flex flex-col-reverse md:flex-row gap-8 md:gap-0 md:justify-between items-center justify-center py-16">
+      <div className="px-8 md:px-20 w-full flex flex-col-reverse md:flex-row gap-8 md:gap-0 md:justify-between items-center justify-center py-16">
         <div className="flex flex-col gap-6 md:w-1/2 md:mt-0 mt-8">
           <h1 className="text-gray-text text-4xl lg:text-6xl font-bold">
             A New Way to Track Tasks and take notes
@@ -27,7 +27,7 @@ const Hero = () => {
           <Image src={HeroImg} alt="Hero Image" />
         </div>
       </div>
-      <p className="md:px-20 text-center md:text-start">
+      <p className="md:px-20 px-3 text-center md:text-start text-sm">
         A Collab 🔗 Project between
         <Link
           className="text-orange-text"
