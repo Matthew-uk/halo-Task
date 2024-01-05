@@ -20,6 +20,7 @@ const config: Config = {
       colors: {
         "orange-text": "#ee6657", // Add a custom color named orange-text
         "gray-text": "#2c3e50",
+        vanilla: "#F3E5AB",
       },
     },
   },
