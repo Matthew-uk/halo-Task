@@ -19,17 +19,17 @@ const Login = () => {
           {/* Name */}
           <div className={inputContainer}>
             <label>Name</label>
-            <input type="text" className={input} />
+            <input type="text" className={input} required/>
           </div>
           {/* Email */}
           <div className={inputContainer}>
             <label>Email</label>
-            <input type="text" className={input} />
+            <input type="email" className={input} required />
           </div>
           {/* Password */}
           <div className={inputContainer}>
             <label>Password</label>
-            <input type="text" className={input} />
+            <input type="password" className={input} required/>
           </div>
           <button className="bg-orange-text text-white h-10 mt-4 mb-8 text-sm">
             Submit
