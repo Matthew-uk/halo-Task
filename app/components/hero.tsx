@@ -18,7 +18,7 @@ const Hero = () => {
           </h3>
           <Link
             className="bg-gray-text rounded-full text-white px-5 py-2 w-max"
-            href={"/signup"}
+            href={"/register"}
           >
             Get Started
           </Link>
