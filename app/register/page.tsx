@@ -1,10 +1,21 @@
+"use client";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
 const inputContainer = "flex flex-col gap-2 text-sm";
 const input = "outline-none border-b border-gray-text text-orange-text pb-1";
 
 const Login = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    const userDetails = { name, email, password };
+    console.log(userDetails);
+  };
+
   return (
     <div className="flex items-center justify-center h-screen">
       {/* Register Container */}
@@ -15,21 +26,36 @@ const Login = () => {
           <h2 className="text-2xl mb-6 text-orange-text">Register</h2>
         </div>
         {/* Form */}
-        <form className="flex flex-col w-5/6 gap-4">
+        <form onSubmit={handleSubmit} className="flex flex-col w-5/6 gap-4">
           {/* Name */}
           <div className={inputContainer}>
             <label>Name</label>
-            <input type="text" className={input} required/>
+            <input
+              type="text"
+              onChange={(e) => setName(e.target.value)}
+              className={input}
+              required
+            />
           </div>
           {/* Email */}
           <div className={inputContainer}>
             <label>Email</label>
-            <input type="email" className={input} required />
+            <input
+              type="email"
+              className={input}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
           </div>
           {/* Password */}
           <div className={inputContainer}>
             <label>Password</label>
-            <input type="password" className={input} required/>
+            <input
+              type="password"
+              className={input}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
           </div>
           <button className="bg-orange-text text-white h-10 mt-4 mb-8 text-sm">
             Submit
