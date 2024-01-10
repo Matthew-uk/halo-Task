@@ -10,7 +10,7 @@ import Link from "next/link";
 const DashboardNav = ({ handleNav, isOpen }: any) => {
   return (
     <div
-      className={`flex flex-col left-0 justify-between h-screen bg-gray-text w-64 fixed md:relative py-8 ${
+      className={`flex flex-col left-0 justify-between h-screen transition-all ease-out bg-gray-text w-64 md:w-96 fixed md:relative py-8 ${
         isOpen ? "-translate-x-full" : "translate-x-0"
       } md:translate-x-0`}
     >
@@ -22,7 +22,7 @@ const DashboardNav = ({ handleNav, isOpen }: any) => {
       </h1>
       <div className="h-5/6 px-4 text-white">
         {/* Task */}
-        <div className="text-lg">
+        <div className="text-lg mb-12">
           <Link
             href={"task"}
             className="flex w-full justify-start items-center [word-spacing: 20px] border-b border-gray-500 cursor-pointer"
@@ -33,7 +33,7 @@ const DashboardNav = ({ handleNav, isOpen }: any) => {
           <div className="ml-4 flex flex-col gap-4 text-base mt-4 items-start justify-start">
             <Link
               href={"/dashboard/important"}
-              className="flex flex-row items-center p-0 cursor-pointer"
+              className="flex flex-row items-center p-0 cursor-pointer mb-4"
             >
               <IoIosNotificationsOutline
                 className="ml-0 mr-2 text-orange-text"
@@ -43,14 +43,14 @@ const DashboardNav = ({ handleNav, isOpen }: any) => {
             </Link>
             <Link
               href={"/dashboard/important"}
-              className="flex flex-row items-center cursor-pointer"
+              className="flex flex-row items-center cursor-pointer mb-4"
             >
               <FaRegClock className="ml-1 mr-2 text-orange-text" size={17} />
               Pending
             </Link>
             <Link
               href={"/dashboard/complete"}
-              className="flex flex-row items-center cursor-pointer"
+              className="flex flex-row items-center cursor-pointer mb-4"
             >
               <TiTick className="ml-1 mr-2 text-orange-text" size={17} />
               Complete
@@ -59,12 +59,15 @@ const DashboardNav = ({ handleNav, isOpen }: any) => {
         </div>
         {/* Notes */}
         <div>
-          <h1 className="flex w-full justify-start mt-8 items-center [word-spacing: 20px] border-b border-gray-500 cursor-pointer">
+          <Link
+            href={"/notes"}
+            className="flex w-full justify-start mt-8 items-center [word-spacing: 20px] border-b border-gray-500 cursor-pointer"
+          >
             <FaRegStickyNote className="mr-2 text-orange-text" />
             Notes
-          </h1>
+          </Link>
           <div className="ml-4 flex flex-col gap-4 text-base mt-4 items-start justify-start">
-            <h2 className="flex flex-row items-center cursor-pointer">
+            <h2 className="flex flex-row items-center cursor-pointer mt-4">
               <FaRegStar className="ml-1 mr-2 text-orange-text" size={17} />
               Starred Notes
             </h2>
