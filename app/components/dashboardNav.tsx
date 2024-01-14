@@ -8,9 +8,7 @@ const Navigation = ({ id, handleNav, isOpen }: any) => {
       {isOpen === false ? (
         <GiHamburgerMenu
           size={25}
-          className={`cursor-pointer md:invisible${
-            !isOpen && "z-50 -ml-5 mt-3 transition-all ease-in-out"
-          }`}
+          className={`cursor-pointer md:invisible`}
           onClick={() => handleNav(!isOpen)}
         />
       ) : (

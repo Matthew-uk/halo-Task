@@ -18,7 +18,7 @@ const DashboardLayout = ({ children, params }: any) => {
         onClick={() => setIsOpen(false)}
       />
       <div
-        className="w-full px-10 flex flex-col"
+        className="w-full px-8 flex flex-col"
         // onClick={() => setIsOpen(true)}
       >
         {<Navigation isOpen={isOpen} handleNav={setIsOpen} />}
