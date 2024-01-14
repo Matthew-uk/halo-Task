@@ -11,7 +11,7 @@ const DashboardNav = ({ handleNav, isOpen }: any) => {
   return (
     <div
       className={`flex flex-col left-0 justify-between h-screen transition-all ease-out bg-gray-text w-64 md:w-96 fixed md:relative py-8 ${
-        isOpen ? "-translate-x-full" : "translate-x-0"
+        isOpen === false ? "-translate-x-full" : "translate-x-0"
       } md:translate-x-0`}
     >
       <h1
