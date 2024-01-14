@@ -3,7 +3,7 @@ import React from "react";
 
 const Page = () => {
   const inputContainer = "flex flex-col mb-4";
-  const inputStyle = "border mt-2 h-10 outline-none px-2";
+  const inputStyle = "border mt-2 h-10 outline-none px-2 w-full";
   return (
     <DashboardLayout>
       <div className="border-2 rounded-md px-4 md:px-8 py-8 border-t-orange-text h-full w-full bg-white">
@@ -34,7 +34,7 @@ const Page = () => {
             />
           </div>
           <div>
-            <label>Important</label>
+            <label className="mr-2">Important</label>
             <input type="checkbox" />
           </div>
           <button
