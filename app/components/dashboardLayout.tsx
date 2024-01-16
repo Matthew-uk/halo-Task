@@ -1,29 +1,76 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { CSSProperties, useEffect, useState } from "react";
 import DashboardNav from "./dashNav";
 import Navigation from "./dashboardNav";
+import axios from "axios";
+import Cookies from "js-cookie";
+import useUserStore from "@/store/store";
+import { BeatLoader } from "react-spinners";
+
+const override: CSSProperties = {
+  display: "block",
+  margin: "0 auto",
+  borderColor: "red",
+};
 
 const DashboardLayout = ({ children, params }: any) => {
   const [isOpen, setIsOpen] = useState(false);
   const [id, setId] = useState("");
+  const [loading, setLoading] = useState(false);
+  const token = Cookies.get("user");
+  const { setUserName } = useUserStore();
 
-  // useEffect(() => {
-  //   setId(params.id[0]);
-  // }, [params.id]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const res = await axios.get(
+          "https://halo-task-backend.onrender.com/api/v1/user",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        setUserName(`${res.data.username}`);
+      } catch (error: any) {
+        console.log(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
   return (
     <div className="flex">
-      <DashboardNav
-        isOpen={isOpen}
-        handleNav={setIsOpen}
-        onClick={() => setIsOpen(false)}
-      />
-      <div
-        className="w-full px-8 flex flex-col"
-        // onClick={() => setIsOpen(true)}
-      >
-        {<Navigation isOpen={isOpen} handleNav={setIsOpen} />}
-        {children}
-      </div>
+      {loading ? (
+        <div
+          className="w-full"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+          }}
+        >
+          <BeatLoader color="#36D7B7" cssOverride={override} size={15} />
+        </div>
+      ) : (
+        <>
+          <DashboardNav
+            isOpen={isOpen}
+            handleNav={setIsOpen}
+            onClick={() => setIsOpen(false)}
+          />
+          <div
+            className="w-full px-8 flex flex-col"
+            // onClick={() => setIsOpen(true)}
+          >
+            {<Navigation isOpen={isOpen} handleNav={setIsOpen} />}
+            {children}
+          </div>
+        </>
+      )}
     </div>
   );
 };
