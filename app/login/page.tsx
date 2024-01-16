@@ -73,7 +73,7 @@ const Login = () => {
                 className="bg-orange-text text-white h-10 mt-4 mb-8 text-sm w-full disabled:opacity-40 transition-all ease-out"
                 disabled={loading}
               >
-                {loading ? "Loading" : "Submit"}
+                {loading ? "Loading..." : "Submit"}
               </button>
             </div>
           </form>
