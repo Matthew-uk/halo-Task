@@ -1,6 +1,9 @@
 "use client";
+import axios from "axios";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import Cookies from "js-cookie";
 
 const inputContainer = "flex flex-col gap-2 text-sm";
 const input = "outline-none border-b border-gray-text text-orange-text pb-1";
@@ -9,11 +12,31 @@ const Login = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const userDetails = { name, email, password };
+    const userDetails = { username: name, email, password };
     console.log(userDetails);
+    if ((name || email || password) === "") {
+      alert("Fill Out the form properly");
+    } else {
+      try {
+        setLoading(true);
+        const res = await axios.post(
+          "https://halo-task-backend.onrender.com/api/v1/register",
+          userDetails
+        );
+        console.log(res.data);
+        Cookies.set("user", res.data.token, { expires: 1 });
+        router.push(`/dashboard/${res.data.user._id}`);
+      } catch (error: any) {
+        console.log(error.message);
+      } finally {
+        setLoading(false);
+      }
+    }
   };
 
   return (
@@ -58,7 +81,7 @@ const Login = () => {
             />
           </div>
           <button className="bg-orange-text text-white h-10 mt-4 mb-8 text-sm">
-            Submit
+            {loading ? "Loading..." : "Submit"}
           </button>
           <p className="text-center text-sm">
             Already a user?{" "}
