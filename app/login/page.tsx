@@ -26,7 +26,7 @@ const Login = () => {
       );
       console.log(res.data);
       const username = res.data.user.username;
-      toast.info("Login Successful", { autoClose: 2000 });
+      toast.success("Login Successful", { autoClose: 2000 });
       toast.success(`Welcome back ${username}`, {
         autoClose: 3000,
         delay: 3000,

@@ -18,7 +18,7 @@ const override: CSSProperties = {
 const DashboardLayout = ({ children, params }: any) => {
   const [isOpen, setIsOpen] = useState(false);
   const [id, setId] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const token = Cookies.get("user");
   const { setUserName } = useUserStore();
   const router = useRouter();
