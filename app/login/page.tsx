@@ -6,6 +6,7 @@ const InputContainer = "flex flex-col text-sm";
 const Input = "outline-none border-b border-gray-text text-orange-text py-2";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -24,10 +25,19 @@ const Login = () => {
         loginDetails
       );
       console.log(res.data);
+      const username = res.data.user.username;
+      toast.info("Login Successful", { autoClose: 2000 });
+      toast.success(`Welcome back ${username}`, {
+        autoClose: 3000,
+        delay: 3000,
+      });
       router.push(`/dashboard/${res.data.user._id}`);
       Cookies.set("user", res.data.token, { expires: 1 });
     } catch (error: any) {
-      console.log(error.message);
+      console.log(error);
+      const errMsg = error?.response?.data?.message;
+      if (!errMsg) toast.error(error.message, { autoClose: 2000 });
+      toast.error(errMsg);
     } finally {
       setLoading(false);
     }

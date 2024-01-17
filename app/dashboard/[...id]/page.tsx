@@ -65,9 +65,9 @@ const Page = ({ params }: any) => {
             <div className="w-full flex justify-between items-center">
               <h2 className="">You have 0 Tasks</h2>
               <Link href="/dashboard/addtask">
-                <a className="px-6 py-2 bg-gray-text text-white rounded-md">
+                <p className="px-6 py-2 bg-gray-text text-white rounded-md">
                   + Task
-                </a>
+                </p>
               </Link>
             </div>
             <div>

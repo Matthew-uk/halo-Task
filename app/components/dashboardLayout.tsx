@@ -6,6 +6,8 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import useUserStore from "@/store/store";
 import { BeatLoader } from "react-spinners";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 const override: CSSProperties = {
   display: "block",
@@ -19,9 +21,15 @@ const DashboardLayout = ({ children, params }: any) => {
   const [loading, setLoading] = useState(false);
   const token = Cookies.get("user");
   const { setUserName } = useUserStore();
+  const router = useRouter();
 
   useEffect(() => {
     const fetchData = async () => {
+      if (!token) {
+        toast.warning("Login In Again...", { autoClose: 2000 });
+        router.push("/login");
+        return false;
+      }
       try {
         setLoading(true);
         const res = await axios.get(
