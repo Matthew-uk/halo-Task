@@ -26,7 +26,7 @@ const DashboardLayout = ({ children, params }: any) => {
   useEffect(() => {
     const fetchData = async () => {
       if (!token) {
-        toast.warning("Login In Again...", { autoClose: 2000 });
+        toast.warning("Login Again...", { autoClose: 2000 });
         router.push("/login");
         return false;
       }
@@ -43,6 +43,7 @@ const DashboardLayout = ({ children, params }: any) => {
         setUserName(`${res.data.username}`);
       } catch (error: any) {
         console.log(error.message);
+        toast.warning("Session Expired Login Again", { autoClose: 2000 });
       } finally {
         setLoading(false);
       }
