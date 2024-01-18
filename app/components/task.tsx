@@ -25,9 +25,9 @@ const TaskBox: React.FC<TaskInterface> = ({ tasks }) => {
           />
           <p className="text-halo-green">{task.taskName}</p>
           <p className="text-base mt-2">{task.taskDescription}</p>
-          <div className="flex flex-row justify-between items-center pt-4 text-sm">
+          <div className="flex flex-row justify-between items-center pt-4 text-sm text-gray-500">
             <p>{task.date.split("T")[0]}</p>
-            <p className="border border-orange-text rounded-full p-2 cursor-pointer">
+            <p className="border border-orange-text rounded-full p-2 cursor-pointer text-black">
               Mark as Done
             </p>
           </div>

@@ -2,7 +2,10 @@
 import DashboardLayout from "@/app/components/dashboardLayout";
 import useUserStore from "@/store/store";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import { toast } from "react-toastify";
+import Cookies from "js-cookie";
 
 const Page = () => {
   const inputContainer = "flex flex-col mb-4 placeholder:text-black text-black";
@@ -14,6 +17,8 @@ const Page = () => {
   const [important, setImportant] = useState(false);
   const { userId } = useUserStore();
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
+  const token = Cookies.get("user");
 
   const handleFormSubmit = async (e: any) => {
     e.preventDefault();
@@ -34,12 +39,20 @@ const Page = () => {
           taskDescription,
           date,
           important,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
 
       console.log(res.data);
+      toast.success("Task Created", { autoClose: 2000 });
+      router.push(`/dashboard/${userId}`);
     } catch (error: any) {
       console.log(error.message);
+      toast.error("An Error Occured while creating Task");
     } finally {
       setLoading(false);
     }
