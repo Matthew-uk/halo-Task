@@ -21,6 +21,7 @@ const config: Config = {
         "orange-text": "#ee6657", // Add a custom color named orange-text
         "gray-text": "#2c3e50",
         vanilla: "#F3E5AB",
+        "halo-green": "#16a085",
       },
     },
   },

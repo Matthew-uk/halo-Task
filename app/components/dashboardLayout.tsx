@@ -17,10 +17,9 @@ const override: CSSProperties = {
 
 const DashboardLayout = ({ children, params }: any) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [id, setId] = useState("");
   const [loading, setLoading] = useState(true);
   const token = Cookies.get("user");
-  const { setUserName } = useUserStore();
+  const { setUserName, setUserId, setTasks } = useUserStore();
   const router = useRouter();
 
   useEffect(() => {
@@ -40,10 +39,23 @@ const DashboardLayout = ({ children, params }: any) => {
             },
           }
         );
+        const tasks = await axios.get(
+          `https://halo-task-backend.onrender.com/api/v1/task?id=${res.data._id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
         setUserName(`${res.data.username}`);
+        setUserId(`${res.data._id}`);
+        setTasks(tasks.data.userTasks);
+        // setTasks(tasks.data.userTasks);
       } catch (error: any) {
         console.log(error.message);
         toast.warning("Session Expired Login Again", { autoClose: 2000 });
+        router.push("/login");
       } finally {
         setLoading(false);
       }

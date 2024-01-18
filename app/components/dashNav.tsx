@@ -10,7 +10,7 @@ import Link from "next/link";
 const DashboardNav = ({ handleNav, isOpen }: any) => {
   return (
     <div
-      className={`flex flex-col left-0 justify-between h-screen transition-all ease-out bg-gray-text w-64 md:w-96 fixed md:relative py-8 ${
+      className={`flex flex-col left-0 justify-between md:min-h-screen h-screen transition-all ease-out bg-gray-text w-64 md:w-96 fixed md:relative py-8 ${
         isOpen === false ? "-translate-x-full" : "translate-x-0"
       } md:translate-x-0`}
     >

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { BeatLoader } from "react-spinners";
 import DashboardLayout from "@/app/components/dashboardLayout";
 import useUserStore from "@/store/store";
+import TaskBox from "@/app/components/task";
 
 const override: CSSProperties = {
   display: "block",
@@ -15,7 +16,7 @@ const override: CSSProperties = {
 
 const Page = ({ params }: any) => {
   const [loading, setLoading] = useState(false);
-  const { setUserName } = useUserStore();
+  const { setUserName, tasks } = useUserStore();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -63,15 +64,20 @@ const Page = ({ params }: any) => {
           <div className="">
             {/* Header */}
             <div className="w-full flex justify-between items-center">
-              <h2 className="">You have 0 Tasks</h2>
-              <Link href="/dashboard/addtask">
-                <p className="px-6 py-2 bg-gray-text text-white rounded-md">
+              <h2 className="md:text-3xl text-2xl">
+                You have {tasks.length} Tasks
+              </h2>
+              <Link
+                href="/dashboard/addtask"
+                className="bottom-5 right-5 fixed"
+              >
+                <p className="px-6 py-2 bg-gray-text text-center text-white rounded-md">
                   + Task
                 </p>
               </Link>
             </div>
-            <div>
-              <h2>This is a new task</h2>
+            <div className="mt-8">
+              <TaskBox tasks={tasks} />
             </div>
           </div>
         </DashboardLayout>
