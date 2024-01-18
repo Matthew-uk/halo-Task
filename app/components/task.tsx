@@ -17,7 +17,7 @@ const TaskBox: React.FC<TaskInterface> = ({ tasks }) => {
       {tasks.map((task, index) => (
         <div
           key={index}
-          className="flex flex-col px-4 py-4 justify-center shadow-sm shadow-slate-300 mb-6 w-full bg-transparent rounded border-l-4 border-l-orange-text relative"
+          className="flex flex-col px-4 py-4 justify-center shadow-sm shadow-slate-300 mb-6 w-full rounded border-l-4 border-l-orange-text relative -z-10"
         >
           <IoClose
             size={20}
