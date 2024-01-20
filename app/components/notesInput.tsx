@@ -14,11 +14,11 @@ const NotesInput = () => {
         rows={5}
         placeholder="Description"
       ></textarea>
-      <div className="flex flex-row gap-1">
-        <div className="rounded-full bg-white p-2 border"></div>
-        <div className="rounded-full bg-halo-blue p-2 border"></div>
-        <div className="rounded-full bg-halo-light-green p-2 border"></div>
-        <div className="rounded-full bg-halo-light-orange p-2 border"></div>
+      <div className="flex flex-row gap-3">
+        <div className="rounded-full bg-white p-3 border"></div>
+        <div className="rounded-full bg-halo-blue p-3 border"></div>
+        <div className="rounded-full bg-halo-light-green p-3 border"></div>
+        <div className="rounded-full bg-halo-light-orange p-3 border"></div>
       </div>
     </div>
   );
