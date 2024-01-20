@@ -14,9 +14,10 @@ const override: CSSProperties = {
   borderColor: "red",
 };
 
-const Page = ({ params }: any) => {
+const ImportantPage = ({ params }: any) => {
   const [loading, setLoading] = useState(false);
   const { setUserName, tasks } = useUserStore();
+  const importantTask = tasks.filter((task: any) => task?.important === true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -65,7 +66,7 @@ const Page = ({ params }: any) => {
             {/* Header */}
             <div className="w-full flex justify-between items-center">
               <h2 className="md:text-3xl text-2xl">
-                You have {tasks.length} Tasks
+                You have {importantTask.length} Important Tasks
               </h2>
               <Link
                 href="/dashboard/addtask"
@@ -77,7 +78,9 @@ const Page = ({ params }: any) => {
               </Link>
             </div>
             <div className="mt-8">
-              <TaskBox tasks={tasks} />
+              <TaskBox
+                tasks={tasks.filter((task: any) => task?.important === true)}
+              />
             </div>
           </div>
         </DashboardLayout>
@@ -87,4 +90,4 @@ const Page = ({ params }: any) => {
   );
 };
 
-export default Page;
+export default ImportantPage;
