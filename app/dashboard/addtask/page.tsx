@@ -108,7 +108,7 @@ const Page = () => {
             className="bg-orange-text text-white border-0 py-2 disabled:opacity-50"
             type="submit"
           >
-            {loading ? "Adding Task..." : "Add Task"}
+            {loading ? "Creating Task..." : "Add Task"}
           </button>
         </form>
       </div>
