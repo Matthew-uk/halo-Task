@@ -60,7 +60,7 @@ const DashboardNav = ({ handleNav, isOpen }: any) => {
         {/* Notes */}
         <div>
           <Link
-            href={"/notes"}
+            href={"/dashboard/notes"}
             className="flex w-full justify-start mt-8 items-center [word-spacing: 20px] border-b border-gray-500 cursor-pointer"
           >
             <FaRegStickyNote className="mr-2 text-orange-text" />

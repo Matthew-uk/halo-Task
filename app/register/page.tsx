@@ -86,7 +86,10 @@ const Login = () => {
               required
             />
           </div>
-          <button className="bg-orange-text text-white h-10 mt-4 mb-8 text-sm w-full disabled:opacity-40 transition-all ease-out">
+          <button
+            disabled={loading}
+            className="bg-orange-text text-white h-10 mt-4 mb-8 text-sm w-full disabled:opacity-40 transition-all ease-out"
+          >
             {loading ? "Loading..." : "Submit"}
           </button>
           <p className="text-center text-sm">
