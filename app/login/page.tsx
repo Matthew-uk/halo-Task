@@ -4,7 +4,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 const InputContainer = "flex flex-col text-sm";
 const Input =
-  "outline-none border-none border-b border-gray-text text-orange-text py-2";
+  "outline-none border-0 border-b border-gray-text text-orange-text py-2";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
