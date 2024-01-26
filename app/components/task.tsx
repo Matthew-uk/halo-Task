@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { MdLabelImportant } from "react-icons/md";
+import Cookies from "js-cookie";
 
 interface Task {
   _id: any;
@@ -20,7 +21,9 @@ interface TaskInterface {
 
 const TaskBox: React.FC<TaskInterface> = ({ tasks }) => {
   const [loading, setLoading] = useState(false);
+  const { setRefresh, userId } = useUserStore();
   const router = useRouter();
+  const token = Cookies.get("user");
 
   const handleComplete = async (id: any) => {
     try {
@@ -29,11 +32,32 @@ const TaskBox: React.FC<TaskInterface> = ({ tasks }) => {
         `https://halo-task-backend.onrender.com/api/v1/task?id=${id}`
       );
       console.log(res.data);
+      setRefresh();
       router.refresh();
     } catch (error: any) {
       console.log(error.message);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleDelete = async (id: any) => {
+    try {
+      // setLoading(true);
+      const res = await axios.delete(
+        `https://halo-task-backend.onrender.com/api/v1/task?id=${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(res.data);
+      setRefresh();
+    } catch (error: any) {
+      console.log(error.message);
+    } finally {
+      // setLoading(false);
     }
   };
 
@@ -47,6 +71,7 @@ const TaskBox: React.FC<TaskInterface> = ({ tasks }) => {
           <IoClose
             size={20}
             className="absolute top-0 right-0 cursor-pointer font-extrabold text-gray-400"
+            onClick={() => handleDelete(task?._id)}
           />
           <p className="text-halo-green flex items-center justify-between mt-4">
             {task.taskName}{" "}

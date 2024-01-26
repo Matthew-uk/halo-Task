@@ -16,7 +16,7 @@ const override: CSSProperties = {
 
 const Page = ({ params }: any) => {
   const [loading, setLoading] = useState(false);
-  const { setUserName, tasks } = useUserStore();
+  const { setUserName, tasks, setRefresh } = useUserStore();
 
   useEffect(() => {
     const fetchData = async () => {

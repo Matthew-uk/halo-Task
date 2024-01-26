@@ -19,7 +19,8 @@ const DashboardLayout = ({ children, params }: any) => {
   const [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const token = Cookies.get("user");
-  const { setUserName, setUserId, setTasks } = useUserStore();
+  const { setUserName, setUserId, setTasks, setNotes, refresh } =
+    useUserStore();
   const router = useRouter();
 
   useEffect(() => {
@@ -47,10 +48,18 @@ const DashboardLayout = ({ children, params }: any) => {
             },
           }
         );
-
+        const notes = await axios.get(
+          `https://halo-task-backend.onrender.com/api/v1/notes?id=${res.data._id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         setUserName(`${res.data.username}`);
         setUserId(`${res.data._id}`);
         setTasks(tasks.data.userTasks);
+        setNotes(notes.data);
         // setTasks(tasks.data.userTasks);
       } catch (error: any) {
         console.log(error.message);
@@ -61,7 +70,7 @@ const DashboardLayout = ({ children, params }: any) => {
       }
     };
     fetchData();
-  }, []);
+  }, [refresh]);
   return (
     <div className="flex">
       {loading ? (
