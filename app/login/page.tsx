@@ -3,8 +3,7 @@ import axios from "axios";
 import Link from "next/link";
 import React, { useState } from "react";
 const InputContainer = "flex flex-col text-sm";
-const Input =
-  "outline-none border-0 border-b border-gray-text text-orange-text py-2";
+const Input = "outline-none border border-gray-text text-orange-text p-1";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
