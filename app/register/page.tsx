@@ -7,7 +7,8 @@ import Cookies from "js-cookie";
 import { toast } from "react-toastify";
 
 const inputContainer = "flex flex-col gap-2 text-sm";
-const input = "outline-none border-b border-gray-text text-orange-text pb-1";
+const input =
+  "outline-none border-none border-b border-gray-text text-orange-text pb-1";
 
 const Login = () => {
   const [name, setName] = useState("");
