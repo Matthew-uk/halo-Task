@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
+import FormLoader from "../components/formLoader";
 
 const inputContainer = "flex flex-col gap-2 text-sm";
 const input = "outline-none border border-gray-text text-orange-text p-1";
@@ -90,7 +91,7 @@ const Login = () => {
             disabled={loading}
             className="bg-orange-text text-white h-10 mt-4 mb-8 text-sm w-full disabled:opacity-40 transition-all ease-out"
           >
-            {loading ? "Loading..." : "Submit"}
+            {loading ? <FormLoader /> : "Submit"}
           </button>
           <p className="text-center text-sm">
             Already a user?{" "}

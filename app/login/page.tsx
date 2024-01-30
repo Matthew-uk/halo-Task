@@ -2,11 +2,12 @@
 import axios from "axios";
 import Link from "next/link";
 import React, { useState } from "react";
-const InputContainer = "flex flex-col text-sm";
+const InputContainer = "flex flex-col text-sm gap-2";
 const Input = "outline-none border border-gray-text text-orange-text p-1";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import FormLoader from "../components/formLoader";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -83,7 +84,7 @@ const Login = () => {
                 className="bg-orange-text text-white h-10 mt-4 mb-8 text-sm w-full disabled:opacity-40 transition-all ease-out"
                 disabled={loading}
               >
-                {loading ? "Loading..." : "Submit"}
+                {loading ? <FormLoader /> : "Submit"}
               </button>
             </div>
           </form>
